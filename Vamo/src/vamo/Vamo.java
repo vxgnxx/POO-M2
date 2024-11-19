@@ -17,12 +17,22 @@ public class Vamo {
     double saldo;
     double limite;
     
+    Vamo(String dono, double saldo) {
+        this.dono = dono;
+        this.saldo = saldo;
+    }
+    
+    Vamo(String dono, double saldo, double limite) {
+        this(dono, saldo); //Chama o metodo construtor da propria classe
+        this.limite = limite;
+    } 
+    
     void depositar(double valor){
         this.saldo = this.saldo + valor;
     }
     
     boolean sacar(double valor){
-        if (saldo + limite > valor) {
+        if (saldo + limite > valor) {é
             this.saldo = this.saldo - valor;
             return true;
         }
@@ -38,18 +48,25 @@ public class Vamo {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner sc = new Scanner(System.in);
-        Vamo felipe = new Vamo();
-        Vamo maria = new Vamo();
+        Scanner sc = new Scanner(System.in); // Cria um scanner
+        //Vamo felipe = new Vamo();
+        Vamo felipe;
+        Vamo maria = new Vamo("Maria", 1000);
         
-        felipe.dono = sc.nextLine();
-        felipe.saldo = sc.nextDouble();
-        maria.dono = "Maria";
-        maria.saldo = 1000;
+        //felipe.dono = sc.nextLine();
+        //felipe.saldo = sc.nextDouble();
+        
+        String nome = sc.nextLine(); // Scan string
+        double valor = sc.nextDouble(); // Scan double
+        
+        felipe = new Vamo(nome, valor, 1000);
+        
+        //maria.dono = "Maria";
+        //maria.saldo = 1000;
         
         felipe.depositar(200);
         // felipe.sacar(900);
-        felipe.sacar(350);
+        //felipe.sacar(350);
         
         felipe.imprimir();
         maria.imprimir();
